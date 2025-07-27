@@ -1,0 +1,56 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow-x: hidden;
+}
+
+.sidebar {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    height: 100%;
+    width: 60px;
+    background-color: #fff;
+    /* border-right: 1px solid #ddd; */
+    transition: width 0.3s;
+    overflow-x: hidden;
+    z-index: 10;
+}
+
+.sidebar.expanded {
+    width: 200px;
+}
+
+.sidebar .nav-link {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    overflow: hidden;
+    margin-top: 30px;
+    /* background-color: lavenderblush; */
+}
+
+.sidebar .nav-link i {
+    font-size: 1.5rem;
+    width: 60px;
+    text-align: center;
+}
+
+.sidebar .nav-link span {
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.sidebar.expanded .nav-link span {
+    opacity: 1;
+}
+
+.toggle-btn {
+    width: 100%;
+    border: none;
+    background: none;
+    text-align: center;
+    padding: 0.5rem 0;
+    cursor: pointer;
+}
