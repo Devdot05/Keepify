@@ -85,7 +85,7 @@ useEffect(() => {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
               />
-              <small className='text-danger'>{formik.touched.firstName && formik.errors.lastName}</small>
+              <small className='text-danger'>{formik.touched.firstName && formik.errors.firstName}</small>
               <input type="text" 
                 name='lastName'
                 placeholder='Enter your last name'
