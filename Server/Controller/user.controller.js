@@ -115,27 +115,11 @@ const getProtected = async(req, res) => {
     
     
 }
-
-
-// Google signup
-
-// passport.serializeUser((user, done) => {
-//   done(null, user._id); // or user.id if you're using MongoDB
-// });
-
-// passport.deserializeUser(async (id, done) => {
-//   try {
-//     const user = await userModel.findById(id);
-//     done(null, user);
-//   } catch (err) {
-//     done(err);
-//   }
-// });
-
+ 
 passport.use(new GoogleStrategy({
   clientID: process.env.GOOGLE_CLIENT_ID,
   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-  callbackURL: "http://localhost:7000/auth/google/callback",
+  callbackURL: "https://keepify-1.onrender.com/auth/google/callback",
   passReqToCallback: true
 }, async (req, accessToken, refreshToken, profile, done) => {
   try {
