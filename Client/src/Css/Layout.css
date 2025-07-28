@@ -62,7 +62,7 @@ header{
     }
 }
 @media (max-width: 400px) {
-    main{
+    .main{
         padding: 70px 20px;
          
     }

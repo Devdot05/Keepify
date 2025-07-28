@@ -222,7 +222,7 @@ const Dashboard = () => {
         </div>
         <Sidebar expanded={sidebarExpanded} />
         <section className='content'>
-          <main className='col-11 col-md-9 col-lg-9 col-xl-9 col-xxl-9 mx-auto'>
+          <main className='col-12 col-md-9 col-lg-9 col-xl-9 col-xxl-9 mx-auto'>
             <div className='text-center'> 
               <p>Welcome! {userName.firstName} {userName.lastName}</p>
             </div>
