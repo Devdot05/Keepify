@@ -27,7 +27,7 @@ passport.deserializeUser(async (id, done) => {
 });
 app.use(cookieParser())
 app.use(cors({
-    origin: "http://localhost:5174",
+    origin: ["https://keepify-olive.vercel.app/","http://localhost:5174"],
     credentials: true
 }))
 app.use(express.json({limit:"500mb"}))
