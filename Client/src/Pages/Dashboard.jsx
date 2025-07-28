@@ -37,11 +37,11 @@ const Dashboard = () => {
   const [spinnerLoading, setSpinnerLoading] = useState(false)
  
 
-  const createNoteUrl = "http://localhost:7000/note"
-  const fetch_url = "http://localhost:7000/result"
-  const delete_url = 'http://localhost:7000/delete'
-  const update_url = "http://localhost:7000/update"
-  const jwt_url = "http://localhost:7000/protected"
+  const createNoteUrl = "https://keepify-1.onrender.com/note"
+  const fetch_url = "https://keepify-1.onrender.com/result"
+  const delete_url = 'https://keepify-1.onrender.com/delete'
+  const update_url = "https://keepify-1.onrender.com/update"
+  const jwt_url = "https://keepify-1.onrender.com/protected"
 
   const [sidebarExpanded, setSidebarExpanded] = useState(false);
 

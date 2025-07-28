@@ -11,7 +11,7 @@ const Login = () => {
 
   const location = useLocation();
   let navigate = useNavigate()
-  const url = 'http://localhost:7000/login'
+  const url = 'https://keepify-1.onrender.com/login'
 
   const formik = useFormik({
     initialValues: {
@@ -60,7 +60,7 @@ const Login = () => {
   }, [location]);
   // console.log(formik.values);
   const handleGoogleLogin = () => {
-    window.location.href = 'http://localhost:7000/auth/google/login'
+    window.location.href = 'https://keepify-1.onrender.com/auth/google/login'
   }
   return (
     <>

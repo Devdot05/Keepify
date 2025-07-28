@@ -10,7 +10,7 @@ import { useEffect } from 'react';
 
 
 const Signup = () => {
-  const url = "http://localhost:7000/register"
+  const url = "https://keepify-1.onrender.com/register"
   const [message, setMessage] = useState('')
   const [error, setError] = useState(null);
   
@@ -56,7 +56,7 @@ const Signup = () => {
 
 
   const handleGoogleSignup = () => {
-    window.location.href = 'http://localhost:7000/auth/google/signup'
+    window.location.href = 'https://keepify-1.onrender.com/auth/google/signup'
   }
 
 useEffect(() => {

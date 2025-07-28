@@ -7,10 +7,11 @@ const cors = require('cors');
 const passport = require('passport')
 const session = require('express-session')
 const cookieParser = require('cookie-parser')
-// require('./path/to/controller/file'); 
+const mongodb_uri = process.env.URI
 const noteRouter = require('./Routes/note.route');
 const SESSION_SECRET = process.env.SESSION_SECRET
 const User = require("./Model/user.model")
+const MongoStore = require('connect-mongo')
 
 passport.serializeUser((user, done) => {
     done(null, user.id); // or user._id
@@ -33,7 +34,15 @@ app.use(express.json({limit:"500mb"}))
 app.use(express.urlencoded({extended:true, limit:"500mb"}))
 
 //session
-app.use(session({ secret: SESSION_SECRET, resave: false, saveUninitialized: true }));
+app.use(session({ 
+    secret: SESSION_SECRET, 
+    resave: false, 
+    saveUninitialized: true,
+    store: MongoStore.create({
+        mongoUrl: mongodb_uri,
+        collectionName: 'sessions',
+    }),
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 
