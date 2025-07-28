@@ -27,7 +27,7 @@ const Layout = () => {
             <div className='col-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 hero-2'>
               <p>Enhance your productivity on Keepify intuitive features designed to seamlessly keep all your notes in one secure and accessible platform.</p>
             </div>
-            <div className='col-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 bg-info d-flex justify-content-end img'>
+            <div className='col-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 d-flex justify-content-end img'>
               <img src="/images/note-list-r.png" alt="" width={'250px'} className='img'/>
             </div>
             <div className='col-11 d-md-none text-center'>
