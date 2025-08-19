@@ -47,7 +47,7 @@ const Signup = () => {
       firstName: yup.string().required('First Name is required'),
       lastName: yup.string().required('Last Name is required'),
       email: yup.string().email('invalid email format').required('email is required'),
-      password: yup.string().required('password is required').min(6, "most not be less than 6 characters")
+      password: yup.string().required('password is required').min(6,"Password most not be less than 6 characters")
     })
 
     
@@ -70,7 +70,7 @@ useEffect(() => {
   
   return (
     <>
-      <section className='container-fluid bg-color'>
+      <section className='container-fluid bg-color text-white'>
         <div className='row bg col-xxl-8 col-xl-8 col-md-10 col-11 rounded-5 mx-auto py-5 shadow'>
           <form onSubmit={formik.handleSubmit} className=' col-xl-6 col-xxl-6 col-lg-6 col-md-6 col-11 mx-auto rounded-5  '>
             <div className='text-center'>
@@ -126,9 +126,9 @@ useEffect(() => {
                   <p>or</p>
                   <hr style={{width:"100%"}}/>
                 </div>
-                <button className='btn border border-black w-100 mb-4' onClick={handleGoogleSignup}><img src="/images/Google.png" alt="" width={'30px'}/>signup with google</button>
-                <button className='btn border border-black w-100'><i class="fa-brands fa-facebook"></i>&nbsp; signup with facebook</button>
-                <p className='text-center'>Already having an account?<a href="/login"> login</a></p>
+                <button className='btn border border-black w-100 mb-4 text-light' onClick={handleGoogleSignup}><img src="/images/Google.png" alt="" width={'30px'}/>signup with google</button>
+                <button className='btn border border-black w-100 text-light'><i class="fa-brands fa-facebook"></i>&nbsp; signup with facebook</button>
+                <p className='text-center mt-2'>Already having an account?<a href="/login"> login</a></p>
             </div>
         </div>
       </section>

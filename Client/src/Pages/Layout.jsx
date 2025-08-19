@@ -18,7 +18,7 @@ const Layout = () => {
           </ul>
         </nav>
       </header>
-      <main className='main'>
+      <main className='main bg-color text-white'>
         <section className="container-fluid  ">
           <div className="row ">
             <div className="col-12 hero rounded-4">

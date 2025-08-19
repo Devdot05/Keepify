@@ -64,11 +64,14 @@ const Login = () => {
   }
   return (
     <>
-      <section className='bg-color vh-100 container-fluid'>
+      <section className='bg-color vh-100 container-fluid text-light'>
         <div action="" onSubmit={formik.handleSubmit} className='row bg text-center col-xl-7 col-xxl-7 col-lg-7 col-md-8 col-11 rounded-5 mx-auto py-5 shadow'>
         <h1 className=''>Welcome Back</h1>
         {error && <p style={{ color: "red" }}>{error}</p>}
           <form className='col-11 mx-auto col-md-6 col-lg-6 col-xl-6 col-xxl-6'>
+            <div>
+              <small className='text-danger'>{message}</small>
+            </div>
             <input  
               type="email"
               name='email' 
@@ -83,7 +86,6 @@ const Login = () => {
               className='form-control shadow-none mt-3'
               onChange={formik.handleChange}
             />
-            <small className='text-danger'>{message}</small>
             <button type='submit' className='btn btn-primary rounded-pill w-100 my-3'>Login</button>
           </form>
           <div className='col-11 col-md-6 col-lg-6 col-xl-6 col-xxl-6 py-2'>
@@ -92,9 +94,9 @@ const Login = () => {
                 <p>or</p>
                 <hr style={{width:"100%"}}/>
              </div>
-              <button className='btn border border-black w-100 mb-4' onClick={handleGoogleLogin}><img src="/images/Google.png" alt="" width={'30px'}/>Login with google</button>
-              <button className='btn border border-black w-100'><i class="fa-brands fa-facebook"></i>&nbsp; Login with facebook</button>
-            <p className='text center'>Don't have account with us <a href="/signup">Register</a></p>
+              <button className='btn border border-black w-100 mb-4 text-light' onClick={handleGoogleLogin}><img src="/images/Google.png" alt="" width={'30px'}/>Login with google</button>
+              <button className='btn border border-black w-100 text-light'><i class="fa-brands fa-facebook"></i>&nbsp; Login with facebook</button>
+            <p className='text center mt-2'>Don't have account with us <a href="/signup">Register</a></p>
           </div>
         </div>
         

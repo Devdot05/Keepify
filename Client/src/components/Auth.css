@@ -5,14 +5,16 @@
 }
 
 .bg-color{
-    background-image: linear-gradient(90deg, rgb(244, 167, 44), rgb(247, 132, 60));
+    background-image: url(https://www.hdwallpapers.in/download/abstract_color_background_picture_8016-1920x1200.jpg);
     /* height: 100vh; */
+    background-repeat: no-repeat;
+    background-size: cover;
     /* padding: 100px 0; */
 }
 
 .bg{
     background-color: rgba(232, 239, 240, 0.178);
-    backdrop-filter: blur(300px);
+    backdrop-filter: blur(20px);
     border: 2px solid rgba(206, 205, 205, 0.575);
     /* padding: 50px;  */
     /* width: 60%;
@@ -20,11 +22,11 @@
 }
 
 i{
-    color: rgb(67, 67, 179);
+    color: rgb(27, 27, 238);
 }
 
 a{
-    color: blue;
+    color: rgb(24, 233, 24);
     text-decoration: none;
 }
 
@@ -36,9 +38,12 @@ header{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: black;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.142);
+    backdrop-filter: blur(20px);
     color: white;
     padding: 0px 50px;
+    position: fixed;
  
 }
 
