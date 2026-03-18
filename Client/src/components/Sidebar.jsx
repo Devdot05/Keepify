@@ -58,23 +58,23 @@ const Sidebar = ({expanded}) => {
                             <i class="fa-solid fa-bars"></i>
                         </button> */}
                         <a href={`/dashboard/${userName._id}`} className="nav-link">
-                            <i className="fa-solid fa-lightbulb bg-success"></i>
+                            <i className="fa-solid fa-lightbulb text-success"></i>
                             <span className="ms-2">Notes</span>
                         </a>
                         <a href={`/dashboard/${userName._id}/remainder`} className="nav-link">
-                            <i className="fa-solid fa-bell"></i>
+                            <i className="fa-solid fa-bell text-success"></i>
                             <span className="ms-2">Reminders</span>
                         </a>
                         <a href={`/dashboard/${userName._id}/label`} className="nav-link">
-                            <i className="fa-solid fa-pencil"></i>
+                            <i className="fa-solid fa-pencil text-success"></i>
                             <span className="ms-2">Edit Labels</span>
                         </a>
                         <a href={`/dashboard/${userName._id}/achieve`} className="nav-link">
-                            <i className="fa-solid fa-box-archive"></i>
+                            <i className="fa-solid fa-box-archive text-success"></i>
                             <span className="ms-2">Archive</span>
                         </a>
                         <a href={`/dashboard/${userName._id}/trash`} className="nav-link">
-                            <i className="fa-solid fa-trash"></i>
+                            <i className="fa-solid fa-trash text-success" ></i>
                             <span className="ms-2">Trash</span>
                         </a>
                     </div>

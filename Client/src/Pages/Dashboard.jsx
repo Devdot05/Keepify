@@ -44,6 +44,8 @@ const Dashboard = () => {
   const jwt_url = "https://keepify-1.onrender.com/protected"
 
   const [sidebarExpanded, setSidebarExpanded] = useState(false);
+  const [noteError, setNoteError] = useState("");
+
 
   const toggleSidebar = () => {
     setSidebarExpanded(!sidebarExpanded);
@@ -67,52 +69,40 @@ const Dashboard = () => {
   };
  
 
-  const handleCreateNote = async (e) => {
-    e.preventDefault();
 
-    // if (!title || !content) {
-    //     alert("Title and content are required.");
-    //     return;
-    // }
+const handleCreateNote = async (e) => {
+  e.preventDefault();
 
-    setLoading(true);
+  if (!title.trim() && !content.trim() && !imageFile) {
+    setNoteError("Title, content, or image is required to create a note.");
+    return;
+  } else {
+    setNoteError("");
+  }
 
-    // FormData is the key to sending files and text together
-    const formData = new FormData();
-    formData.append('title', title);
-    formData.append('content', content);
-    formData.append('userId', userId); 
+  setLoading(true);
 
-  
-    // Only append the image if a file was selected
-    if (imageFile) {
-        // The key 'image' MUST match `upload.single('image')` on your backend
-        formData.append('image', imageFile); 
-    }
+  const formData = new FormData();
+  if (title.trim()) formData.append('title', title);
+  if (content.trim()) formData.append('content', content);
+  formData.append('userId', userId);
+  if (imageFile) formData.append('image', imageFile);
 
-    try {
-      const response = await axios.post(createNoteUrl, formData);
-        
-
-      // Add the new note to the top of the list
-      setResult([response.data.note, ...result]);
-
-      // Reset the form
-      setTitle('');
-      setContent('');
-      setImageFile(null);
-      // Clear the file input visually
-      document.getElementById('file-input').value = null;
-      fetchInfo()
-
-    } catch (error) {
-        console.error("Error creating note:", error);
-        alert("Failed to create note.");
-    } finally {
-        setLoading(false);
-    }
+  try {
+    const response = await axios.post(createNoteUrl, formData);
+    setResult([response.data.note, ...result]);
+    setTitle('');
+    setContent('');
+    setImageFile(null);
+    document.getElementById('file-input').value = null;
+    fetchInfo();
+  } catch (err) {
+    console.error(err);
+    setNoteError("Failed to create note.");
+  } finally {
+    setLoading(false);
+  }
 };
-
 
   const fetchInfo = () => {
     setSpinnerLoading(true)
@@ -226,6 +216,7 @@ const Dashboard = () => {
             <div className='text-center'> 
               <p>Welcome! {userName.firstName} {userName.lastName}</p>
             </div>
+            {noteError && <p className="text-danger text-center">{noteError}</p>}
             <form onSubmit={handleCreateNote} className=''>
               <input 
                 type="text" 

@@ -87,7 +87,7 @@ const Signup = () => {
               type="text"
               name="firstName"
               placeholder="First Name"
-              className="form-control mb-2 shadow-none"
+              className="form-control mb-2 shadow-none control"
               value={formik.values.firstName}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
@@ -100,7 +100,7 @@ const Signup = () => {
               type="text"
               name="lastName"
               placeholder="Last Name"
-              className="form-control mb-2 shadow-none mt-2"
+              className="form-control mb-2 shadow-none mt-2 control"
               value={formik.values.lastName}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
@@ -113,7 +113,7 @@ const Signup = () => {
               type="email"
               name="email"
               placeholder="Email"
-              className="form-control mb-2 shadow-none mt-2"
+              className="form-control mb-2 shadow-none mt-2 control"
               value={formik.values.email}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
@@ -126,7 +126,7 @@ const Signup = () => {
               type="password"
               name="password"
               placeholder="Password"
-              className="form-control mb-2 shadow-none mt-2"
+              className="form-control mb-2 shadow-none mt-2 control"
               value={formik.values.password}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}

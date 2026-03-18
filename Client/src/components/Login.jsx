@@ -76,7 +76,7 @@ const Login = () => {
                 type="email"
                 name="email"
                 placeholder="Enter your email"
-                className="form-control shadow-none"
+                className="form-control shadow-none control"
                 value={formik.values.email}
                 onChange={formik.handleChange}
                 required
@@ -87,7 +87,7 @@ const Login = () => {
                 type="password"
                 name="password"
                 placeholder="Enter your password"
-                className="form-control shadow-none"
+                className="form-control shadow-none control"
                 value={formik.values.password}
                 onChange={formik.handleChange}
                 required
