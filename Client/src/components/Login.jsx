@@ -1,108 +1,131 @@
-import { useFormik } from 'formik'
-import React, { useEffect, useState } from 'react'
-import axios from "axios"
-import { useNavigate } from 'react-router-dom'
-import { useLocation } from "react-router-dom";
-import "./Auth.css"
+import React, { useEffect, useState } from "react";
+import { useFormik } from "formik";
+import axios from "axios";
+import { useNavigate, useLocation } from "react-router-dom";
+import "./Auth.css";
 
 const Login = () => {
-  const [message, setMessage] = useState('')
+  const [message, setMessage] = useState("");
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const location = useLocation();
-  let navigate = useNavigate()
-  const url = 'https://keepify-1.onrender.com/login'
+  const navigate = useNavigate();
+  const url = "https://keepify-1.onrender.com/login";
 
+  // Formik
   const formik = useFormik({
-    initialValues: {
-      email: "",
-      password: ""
-    },
+    initialValues: { email: "", password: "" },
+    onSubmit: async (values) => {
+      setLoading(true);
+      setMessage("");
+      try {
+        const response = await axios.post(url, values);
 
-    onSubmit: (values) => {
-      console.log(values);
-      axios.post(url, values)
-      .then((response) => {
-        console.log(response);
-        if(response.data.status === true){
-          console.log("user found");
-          const id = response.data.user._id;
-          const userDetails = response.data.user
-          
-          console.log(id);
-          localStorage.setItem("users", JSON.stringify(userDetails))
-          localStorage.token = response.data.token
-          console.log(response.data.token);
-          
-          navigate(`/dashboard/${id}`)
-          
-          
-        }else{
-          setMessage(response.data.message)
-          console.log('user not found');
-           
+        if (response.data.status) {
+          const userDetails = response.data.user;
+          localStorage.setItem("users", JSON.stringify(userDetails));
+          localStorage.setItem("token", response.data.token);
+
+          setTimeout(() => {
+            setLoading(false);
+            navigate(`/dashboard/${userDetails._id}`);
+          }, 1000);
+        } else {
+          setTimeout(() => {
+            setLoading(false);
+            setMessage(response.data.message);
+          }, 1000);
         }
-        
-      }).catch((err) => {
-        console.log(err);
-        
-      })
-      
-    }
-  })
+      } catch (err) {
+        setLoading(false);
+        console.error(err);
+        setMessage("Something went wrong. Please try again.");
+      }
+    },
+  });
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const errorMsg = params.get("error");
-    if (errorMsg) {
-      setError(decodeURIComponent(errorMsg));
-    }
+    if (errorMsg) setError(decodeURIComponent(errorMsg));
   }, [location]);
-  // console.log(formik.values);
+
   const handleGoogleLogin = () => {
-    window.location.href = 'https://keepify-1.onrender.com/auth/google/login'
-  }
+    window.location.href = "https://keepify-1.onrender.com/auth/google/login";
+  };
+
   return (
-    <>
-      <section className='bg-color vh-100 container-fluid text-light'>
-        <div action="" onSubmit={formik.handleSubmit} className='row bg text-center col-xl-7 col-xxl-7 col-lg-7 col-md-8 col-11 rounded-5 mx-auto py-5 shadow'>
-        <h1 className=''>Welcome Back</h1>
-        {error && <p style={{ color: "red" }}>{error}</p>}
-          <form className='col-11 mx-auto col-md-6 col-lg-6 col-xl-6 col-xxl-6'>
-            <div>
-              <small className='text-danger'>{message}</small>
-            </div>
-            <input  
-              type="email"
-              name='email' 
-              placeholder='enter you email'
-              className='form-control shadow-none mt-3' 
-              onChange={formik.handleChange}
-            />
-            <input 
-              type="password"
-              name='password' 
-              placeholder='enter your password' 
-              className='form-control shadow-none mt-3'
-              onChange={formik.handleChange}
-            />
-            <button type='submit' className='btn btn-primary rounded-pill w-100 my-3'>Login</button>
-          </form>
-          <div className='col-11 col-md-6 col-lg-6 col-xl-6 col-xxl-6 py-2'>
-             <div className='d-flex gap-2'>
-                <hr style={{width:"100%",}}/>
-                <p>or</p>
-                <hr style={{width:"100%"}}/>
-             </div>
-              <button className='btn border border-black w-100 mb-4 text-light' onClick={handleGoogleLogin}><img src="/images/Google.png" alt="" width={'30px'}/>Login with google</button>
-              <button className='btn border border-black w-100 text-light'><i class="fa-brands fa-facebook"></i>&nbsp; Login with facebook</button>
-            <p className='text center mt-2'>Don't have account with us <a href="/signup">Register</a></p>
+    <section className="bg-dark vh-100 d-flex align-items-center">
+      {loading ? (
+        <div className="text-center w-100">
+          <div className="spinner-border text-light" role="status">
+            <span className="visually-hidden">Loading...</span>
           </div>
         </div>
-        
-      </section>
-    </>
-  )
-}
+      ) : (
+        <div className="card p-4 shadow-lg mx-auto col-11 col-md-8 col-lg-6 rounded-4">
+          <h1 className="text-center mb-3">Welcome Back</h1>
 
-export default Login
+          {error && <p className="text-danger text-center">{error}</p>}
+          {message && <p className="text-danger text-center">{message}</p>}
+
+          <form onSubmit={formik.handleSubmit} className="mb-3">
+            <div className="mb-3">
+              <input
+                type="email"
+                name="email"
+                placeholder="Enter your email"
+                className="form-control shadow-none"
+                value={formik.values.email}
+                onChange={formik.handleChange}
+                required
+              />
+            </div>
+            <div className="mb-3">
+              <input
+                type="password"
+                name="password"
+                placeholder="Enter your password"
+                className="form-control shadow-none"
+                value={formik.values.password}
+                onChange={formik.handleChange}
+                required
+              />
+            </div>
+            <button
+              type="submit"
+              className="btn btn-success w-100 rounded-pill"
+            >
+              Login
+            </button>
+          </form>
+
+          <div className="d-flex align-items-center mb-3">
+            <hr className="flex-grow-1" />
+            <span className="px-2">or</span>
+            <hr className="flex-grow-1" />
+          </div>
+
+          <button
+            className="btn btn-outline-light w-100 mb-2 d-flex align-items-center justify-content-center gap-2"
+            onClick={handleGoogleLogin}
+          >
+            <img src="/images/Google.png" alt="Google" width="25" />
+            Login with Google
+          </button>
+
+          <button className="btn btn-outline-primary w-100 d-flex align-items-center justify-content-center gap-2 mb-3">
+            <i className="fab fa-facebook"></i> Login with Facebook
+          </button>
+
+          <p className="text-center mb-0">
+            Don&apos;t have an account? <a href="/signup">Register</a>
+          </p>
+        </div>
+      )}
+    </section>
+  );
+};
+
+export default Login;

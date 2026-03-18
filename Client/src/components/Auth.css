@@ -4,76 +4,39 @@
     box-sizing: border-box;
 }
 
-.bg-color{
-    background-image: url(https://www.hdwallpapers.in/download/abstract_color_background_picture_8016-1920x1200.jpg);
-    /* height: 100vh; */
-    background-repeat: no-repeat;
-    background-size: cover;
-    /* padding: 100px 0; */
+.bg-dark {
+  background-color: #121212 !important;
 }
 
-.bg{
-    background-color: rgba(232, 239, 240, 0.178);
-    backdrop-filter: blur(20px);
-    border: 2px solid rgba(206, 205, 205, 0.575);
-    /* padding: 50px;  */
-    /* width: 60%;
-    margin: 0 auto; */
+.card {
+  background-color: #1e1e1e;
+  color: #fff;
 }
 
-i{
-    color: rgb(27, 27, 238);
+.form-control {
+  background-color: #2c2c2c;
+  border: none;
+  color: #fff;
 }
 
-a{
-    color: rgb(24, 233, 24);
-    text-decoration: none;
+.form-control:focus {
+  box-shadow: none;
+  border: 1px solid #0dcaf0;
+  background-color: #444444;
+  color: white
 }
 
-a:hover{
-    color: red;
+a {
+  color: #0dcaf0;
+  text-decoration: none;
 }
 
-header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.142);
-    backdrop-filter: blur(20px);
-    color: white;
-    padding: 0px 50px;
-    position: fixed;
+a:hover {
+  text-decoration: underline;
+}
+
+.form-control::placeholder {
+    color: #a5a4a4;
+}
+
  
-}
-
-ul{
-    display: flex;
-    gap: 40px;
-}
-
-ul li{
-    list-style: none;
-
-}
-
-ul li a{
-}
-
-.shadow{
-    box-shadow: 3px 7px 30px -3px rgba(0,0,0,0.38);
-    -webkit-box-shadow: 3px 7px 30px -3px rgba(0,0,0,0.38);
-    -moz-box-shadow: 3px 7px 30px -3px rgba(0,0,0,0.38);
-}
-
-.bg-color{
-        
-    padding: 100px 0;
-}
-
-@media (max-width:767px) {
-    .bg-color{
-        
-        padding: 50px 0;
-    }
-}

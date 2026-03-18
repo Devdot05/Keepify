@@ -1,79 +1,43 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-header{
-    /* position: fixed;
-    top: 0;
-    width: 100%; */
-}
-.main{
-    padding: 70px 50px;
-    background-color: #E2E2E2;
-    height: 100vh;
+/* Hero Section */
+.main {
+  min-height: 100vh;
+  background-color: #121212; /* Dark modern background */
 }
 
-.img{
-        display: block;
-    }
-
- .hero-2{
-    margin-top: 50px;
-}
- 
-.hero h1{
-    font-size: 80px;
+.hero h1 {
+  font-size: 2.5rem;
 }
 
-.hero-2 p{
-    font-size: 25px;
+.hero p {
+  font-size: 1.2rem;
+  line-height: 1.6;
 }
 
-@media (max-width: 889px) {
-    .hero h1{
-        font-size: 65px;
-    }
+/* Buttons */
+.btn-success {
+  background-color: #28a745;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
 }
 
-@media (max-width: 767px) {
-    .hero h1{
-        font-size: 50px;
-    }
-
-    .hero-2 p{
-        font-size: 20px;
-    }
-
-    .img{
-        display: none;
-    }
+.btn-success:hover {
+  background-color: #1e7e34;
+  transform: translateY(-2px);
 }
-@media (max-width: 680px) {
-    .hero-2{
-        margin-top: 30px;
-    }
-    .hero h1{
-        font-size: 40px;
-    }
 
-    .hero-2 p{
-        font-size: 20px;
-    }
+/* Navbar */
+.navbar {
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
 }
-@media (max-width: 400px) {
-    .main{
-        padding: 70px 20px;
-         
-    }
-    .hero-2{
-        margin-top: 20px;
-    }
-    .hero h1{
-        font-size: 40px;
-    }
 
-    .hero-2 p{
-        font-size: 19px;
-    }
+/* Responsive */
+@media (max-width: 768px) {
+  .main h1 {
+    font-size: 2rem;
+  }
+  .main p {
+    font-size: 1rem;
+  }
 }

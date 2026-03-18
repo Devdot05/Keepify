@@ -27,9 +27,13 @@ const createNote = (req, res) => {
 }
 
 const result = (req, res) => {
+  console.log(req);
+  // const userId = req.user._id
      noteModel.find().sort({ createdAt: -1 }) // Sort by newest first
     .then((notes) => {
       res.status(200).json({ status: true, message: "Notes fetched successfully", notes });
+      // console.log(notes);
+      
       // console.error("Notes fetching successfully", notes);
     })
     .catch((err) => {

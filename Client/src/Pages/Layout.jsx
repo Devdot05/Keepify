@@ -1,61 +1,56 @@
-import React from 'react'
-import Navbar from '../components/Navbar'
-import "../Css/Layout.css"
-import { Outlet, Link } from 'react-router-dom'
+import React from 'react';
+import { Outlet, Link } from 'react-router-dom';
+import "../Css/Layout.css";
 
 const Layout = () => {
   return (
     <>
-    <Outlet/>
-      <header>
-        <div>
-          <h2>Keepify</h2>
+      {/* Navbar */}
+      <header className="navbar navbar-expand-lg navbar-dark bg-dark py-3 px-4 fixed-top">
+        <div className="container-fluid d-flex justify-content-between align-items-center">
+          <h2 className="text-white mb-0">Keepify</h2>
+          <nav>
+            <ul className="navbar-nav flex-row gap-3 mb-0">
+              <li className="nav-item">
+                <Link to='/login' className='btn btn-success'>Login</Link>
+              </li>
+            </ul>
+          </nav>
         </div>
-        <nav>
-          <ul className='mt-3'>
-            <li><Link to='/login' className='btn btn-success'>Login</Link></li>
-             
-          </ul>
-        </nav>
       </header>
-      <main className='main bg-color text-white'>
-        <section className="container-fluid  ">
-          <div className="row ">
-            <div className="col-12 hero rounded-4">
-              <h1>Organize your thoughts Effortlessly</h1>
+
+      {/* Outlet for nested routes */}
+      <Outlet />
+
+      {/* Hero Section */}
+      <main className='main bg-dark text-white py-5 d-flex align-items-center justify-content-center'>
+        <section className="container py-5">
+          <div className="row align-items-center justify-content-center">
+
+            {/* Hero Text */}
+            <div className="col-12 col-md-6 mb-4 mb-md-0">
+              <h1 className="display-5 fw-bold mb-3">Organize your thoughts effortlessly</h1>
+              <p className="lead mb-4">
+                Enhance your productivity with Keepify’s intuitive features, designed to seamlessly keep all your notes in one secure and accessible platform.
+              </p>
+              <Link to='/signup' className="btn btn-success btn-lg">Get Started</Link>
             </div>
-            <div className='col-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 hero-2'>
-              <p>Enhance your productivity on Keepify intuitive features designed to seamlessly keep all your notes in one secure and accessible platform.</p>
+
+            {/* Hero Image */}
+            <div className="col-12 col-md-6 text-center text-md-end">
+              <img 
+                src="/images/note-list-r.png" 
+                alt="Notes Illustration" 
+                className="img-fluid rounded" 
+                style={{ maxWidth: '350px' }}
+              />
             </div>
-            <div className='col-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 d-flex justify-content-end img'>
-              <img src="/images/note-list-r.png" alt="" width={'250px'} className='img'/>
-            </div>
-            <div className='col-11 d-md-none text-center'>
-              <img src="/images/note-list-r.png" alt="" width={'200px'}/>
-            </div>
-            <div className="col-12">
-              <Link to='/signup' className='btn btn-success'>Get Stated</Link>
-            </div>
+
           </div>
         </section>
-        {/* <div className=''>
-          <div className="row">
-            <div className='col-12'>
-            </div>
-            <div className='col-6'>
-              <p>Capture your thoughts instantly with [Your App Name], a clean and intuitive note-taking app. Whether it's ideas, tasks, or reminders, keep everything organized in one place. Simple, fast, and distraction-free!</p>
-            </div>
-            <div className='col-6 text-end'>
-              <img src="/images/notebook-r.png" alt="" width={'300px'}/>
-              <p>This note-taking book is designed to help you stay organized, focused, and productive. With its high-quality paper and durable cover, this book is perfect for jotting down notes, ideas, and inspiration.
-              </p>
-            </div>
-          </div>
-              <li><Link to='/signup' className='btn btn-primary'>Signup</Link></li>
-        </div> */}
       </main>
     </>
-  )
+  );
 }
 
-export default Layout
+export default Layout;

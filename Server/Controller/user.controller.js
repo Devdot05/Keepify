@@ -96,8 +96,8 @@ const getProtected = async(req, res) => {
                 res.send({status: false, message: "session expired. Kindly signin again"})
             }else{
                 console.log(result.email);
-                let user = await userModel.findOne({email: result.email})
-                console.log(user);
+                let user = await userModel.findOne({email: result.email, userId: result._id})
+                // console.log(user);
                 
                if (!user) {
                     return res.status(404).json({ status: false, message: "User not found" });
